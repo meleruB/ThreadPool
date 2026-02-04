@@ -1,0 +1,9 @@
+Solutia consta in crearea unui ThreadPool cu workeri egali cu nr max de threaduri.
+Workerii din Threadpool preiau cate un task din coada de taskuri.
+Coada de taskuri este resursa comuna intre toti workerii.
+De fiecare data cand un task este creat, acesta se adauga in coada folosita de workeri.
+Fiecarui task i se atribuie in task_id, task_id calculat incremental, in interiorul unui lock pentru a asigura atomicitatea variabilei.
+La primirea unui request se apeleaza metoda de adaugare a unui task din Threadpool, aceasta intoarce task_id-ul ce va fi dat ca raspuns la request.
+Am creat o clasa noua task unde se afla toata logica pentru cele 8 endpointuri ce proceseaza datele de intrare.
+Pentru procesarea xml-ului am ales pandas pentru ca ofera suport usor pentru citire, scriere si manipularea datelor. 
+Am folosit filtrare si grupare din dataframe pentru a calcula cu usurinta mediile diferitelor statistici.
